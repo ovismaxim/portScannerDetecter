@@ -1,6 +1,6 @@
 # Cyber 2.0 log analysis
 
-This repo contains a dummy representasion netowrk logs in json format as recoreded by the monitoring applications.
+This repo contains a dummy representasion of netowrk logs in json format as recoreded by the monitoring applications.
 
 log fields:
 ```
@@ -81,4 +81,4 @@ Must use a node js backend.
 Node event loop hang must be taken in consideration.
 Can convert the json to any performant data structure /database.
 
-If needed a deployment instruction must be supplied (Not limited to the assignment time limit).
+If needed - a deployment instruction must be supplied (Not limited to the assignment time limit).
