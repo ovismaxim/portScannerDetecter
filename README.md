@@ -2,7 +2,7 @@
 
 This repo contains:
  * A filteringService function to be implemented.
- * Simple portscanner tester.
+ * Simple testing function to simpleportscanner.js.
  * Winston logger.
 
 ## Port scanner definition.
@@ -18,7 +18,7 @@ To implement a filtering microservice in filteringService.js which decides if th
 If the request is valid it will be passed to writeLegitimateRequest function.
 If its a port scan attempt the requests history will be logged with thier timestamps. 
 
-A request will be considered a portscan if there were atleast 5 diffrent requests in a 10 seconds timeframe relative to the request.
+**A request will be considered a portscan if there were atleast 5 diffrent requests in a 10 seconds timeframe relative to the request.**
 
 
 
