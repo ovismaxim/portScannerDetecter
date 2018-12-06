@@ -1,84 +1,29 @@
-# Cyber 2.0 log analysis
+# Cyber 2.0 port scan filtering service assignment
 
-This repo contains a dummy representasion of netowrk logs in json format as recoreded by the monitoring applications.
+This repo contains:
+ * A filteringService function to be implemented.
+ * Simple portscanner tester.
+ * Winston logger.
 
-log fields:
-```
-{
-  os: <operating system>,
-  hostname: <computer name that *reported* the log>,
-  client_time: <request / receive computer time>,
-  full_server_time: <server timestamp>,
-  process_id: <the process id>,
-  process_name: <the executable name>,
-  process_path: <process path>,
-  application_name: <application display name>,
-  protocol: <network protocol>,
-  status: <network alert>,
-  source_port: <source port>,
-  destination_port: <destination port>,
-  direction: <network direction>,
-  file_path: <process path>,
-  x_cast: <network not unicast / unicast>,
-  state: <client defence state>,
-  source_ip: <source ip>,
-  destination_ip: <destination ip>,
-  sequence_number: <ipc sequence_number -  irrelevant>,
-  sub_sequence_number: <ipc sub_sequence_number - irrelevant>,
-  user_name: <logged user>,
-  mog_counter: <request sum aggregation from client>,
-  destination_path: <file system access request path>,
-  reason: <file system access request status>,
-  image_path: <the dll that originated request path>,
-  image_name: <dll name>,
-  parent_path: <the application that owns the dll path>,
-  parent_name: <the application that owns the dll display name>,
-  chain_array: <ipc - irrelevant>
-}
-```
+## Port scanner definition.
 
-Limitations / System spec:
-  * The logs are sent in intervals to the server.
-  * Several fields are automatically added by elastic / logstash therefore are not mentioned.
-  * Dll can send request on behalf of an application.
-  * The logs are supplied from several computers in the same network.
+General definition:
+ 
+A port scan is an attack that sends client requests to a range of server port addresses on a host, with the goal of finding an active port and exploiting a known vulnerability of that service. Scanning, as a method for discovering exploitable communication channels, has been around for ages. The idea is to probe as many listeners as possible, and keep track of the ones that are receptive or useful to your particular need.
 
-The logs contain request types:
-  * tcp.
-  * udp.
-  * udp broadcast.
-  * fsa activity (network file system access).
+## Assignment Description.
 
+The object of this assignment is:
+To implement a filtering microservice in filteringService.js which decides if the request is a valid.
+If the request is valid it will be passed to writeLegitimateRequest function.
+If its a port scan attempt the requests history will be logged with thier timestamps. 
 
-## Assignment Description
-
-The purpose of this assignment is to identify malicious application from the logs supplied
-and display them in a simple dashboard.
-There are several malicious application activity recorded in the logs.
-
-An application will be considered malicious by having:
-  * A lot of blocked activity on single computer.
-  * A lot of legitimate network activity on port / dest.
+A request will be considered a portscan if there were atleast 5 diffrent requests in a 10 seconds timeframe relative to the request.
 
 
 
-## Backend
-
-The backend should supply the following api routes:
-  * Top 3 infected computers.
-  * Top 3 malicious applications in the top 3 infected computers.
-  * Top 3 malicious application names.
-   
-
-
-## Frontend
-No real demand, a page as simple as 3 html table with a button for data request.
-
-The only demand is that the application ui will be part of the node project.
-
-## Frameworks
-Must use a node js backend.
+## Frameworks limitations.
 Node event loop hang must be taken in consideration.
-Can convert the json to any performant data structure /database.
+Any framework, infrascture or DB can be used.
 
-If needed - a deployment instruction must be supplied (Not limited to the assignment time limit).
+If needed - a deployment/spec instruction must be supplied (Not limited to the assignment time limit).
