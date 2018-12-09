@@ -14,16 +14,19 @@ A port scan is an attack that sends client requests to a range of server port ad
 ## Assignment Description.
 
 The object of this assignment is:
-To implement a filtering microservice in filteringService.js which decides if the request is a valid.
-If the request is valid it will be passed to writeLegitimateRequest function.
-If its a port scan attempt the requests history will be logged with thier timestamps. 
+To implement a POC filtering microservice in filteringService.js which decides if the request is a valid.
+  * If the request is valid it will be passed to writeLegitimateRequest function.
+  * If its a port scan attempt the requests history will be logged with thier timestamps. 
+
+Node event loop hang must be taken in consideration, if any limitation is broke please specifty why.
 
 **A request will be considered a portscan if there were atleast 5 diffrent requests in a 10 seconds timeframe relative to the request.**
+
+**If the Assignment isn't completed it is still valid to send a POC of the desigered solutions**
+
 
 
 
 ## Frameworks limitations.
-Node event loop hang must be taken in consideration.
 Any framework, infrascture or DB can be used.
-
 If needed - a deployment/spec instruction must be supplied (Not limited to the assignment time limit).

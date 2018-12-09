@@ -41,9 +41,15 @@ const filterService = require('./filteringService');
       const source = sources[Math.floor(Math.random() * 10)];
       
       for(let j=0;j<numberOfRequests;j++){
+        if(Math.round(Math.random())>0){
+          //Adding random timeout intervals to sparse results, can be removed for more "port scan cases".
+          console.log('awaitng timeout...');
+          await new Promise((resolve,reject)=>setTimeout(()=>{resolve()},50));
+        }
         const port = ports[Math.floor(Math.random() * 10)];
         const dest = dests[Math.floor(Math.random() * 10)];
         const payload = Math.random().toString(36).substring(7);
+        console.log(`${source} to ${dest}:${port}`);
         filterService(source, dest, port, payload);
       }
     }
