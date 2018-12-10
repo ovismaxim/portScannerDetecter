@@ -30,3 +30,6 @@ Node event loop hang must be taken in consideration, if any limitation is broke 
 ## Frameworks limitations.
 Any framework, infrascture or DB can be used.
 If needed - a deployment/spec instruction must be supplied (Not limited to the assignment time limit).
+Extra credit will be given for a dockerized application.
+
+
