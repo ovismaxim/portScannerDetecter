@@ -1,6 +1,5 @@
 const filterService = require('./filteringService');
 
-
 (async function test() {
   try {
     const sources = [
